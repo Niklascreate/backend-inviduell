@@ -7,28 +7,6 @@ export function insertMenu(callback) {
     dbMenu.insert(menu, callback);
 }
 
-/*
-// Funktion för att lägga till ett nytt objekt till menyn
-export function addToMenu(newMenuItem, callback) {
-    dbMenu.insert(newMenuItem, callback);
-}
-
-// Funktion för att hämta alla objekt från menyn
-export function getMenu(callback) {
-    dbMenu.find({}, callback);
-}
-
-// Funktion för att uppdatera ett befintligt objekt i menyn
-export function updateMenuItem(itemId, updatedFields, callback) {
-    dbMenu.update({ _id: itemId }, { $set: updatedFields }, {}, callback);
-}
-
-// Funktion för att uppdatera ett befintligt objekt i menyn
-export function deleteMenuItem(itemId, callback) {
-    dbMenu.remove({ _id: itemId }, {}, callback);
-}
-*/
-
 const menu = [
     {
         "id": 1,

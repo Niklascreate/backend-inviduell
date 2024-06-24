@@ -1,6 +1,5 @@
 import express from 'express';
 import Datastore from 'nedb';
-import validateProduct from '../middlewares/validateProduct.js';
 import errorHandler from '../middlewares/orderMiddleWare.js';
 import { insertMenu } from '../db/menu.js';
 
@@ -31,10 +30,6 @@ router.post('/add-to-cart', validateProduct, (req, res, next) => {
     });
 });
 
-// Funktion för att ladda ner alla produkter i varukorgen
-export function getCart(callback) {
-    dbCart.find({}, callback);
-}
 
 router.get('/cart', (req, res, next) => {
     getCart((err, products) => {
@@ -69,7 +64,7 @@ router.delete('/cart/:id', (req, res, next) => {
 
     deleteFromCart(productId, (err, numRemoved) => {
         if (err) {
-            return next(err);  // Vidarebefordra felet till middlevare för felhantering
+            return next(err);
         }
         if (numRemoved === 0) {
             return res.status(404).send('Produktet finns inte i varukorgen');
