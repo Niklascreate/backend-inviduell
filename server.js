@@ -8,7 +8,7 @@ const PORT = 8080;
 
 app.use(express.json());
 
-app.use('/admin', adminRoute); // Skapa admin via POST /admin/create
+app.use('/admin', adminRoute); // Skapa admin via POST /admin/verify
 app.use('/products', productsRoutes); // Hämta produkterna
 app.use('/updatedmenu', menuRoute); // modifiera en produkt
 

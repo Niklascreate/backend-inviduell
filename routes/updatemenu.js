@@ -1,5 +1,4 @@
 import express from 'express';
-import { insertMenu, updateMenuProduct } from '../middlewares/menuhandler.js';
 
 const router = express.Router();
 

@@ -1,9 +1,3 @@
-import Datastore from 'nedb';
-
-// Initiera databasen
-const dbMenu = new Datastore({ filename: './db/menu.db', autoload: true });
-
-// Menyobjekt
 const menu = [
     {
         "id": 1,
