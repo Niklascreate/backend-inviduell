@@ -1,17 +1,19 @@
 import express from 'express';
 import Datastore from 'nedb';
-import { v4 as uuidv4 } from 'uuid';
 
 const router = express.Router();
-const db = new Datastore({ filename: './db/products.db', autoload: true });
+const db = new Datastore({ filename: './db/modifyproducts.db', autoload: true });
 
 // Middleware för att verifiera admin
 function requireAdmin(req, res, next) {
-    // Implementera din logik för att verifiera admin här
-    // Exempelvis kan du kontrollera om användaren är inloggad som admin
-    // och sedan anropa next() om de är admin, annars returnera en 401 Unauthorized
-    // I detta exemplet låtsas vi att det redan finns en funktion för detta.
-    next(); // Glöm inte att anropa next() när du är klar med verifieringen
+    // Exempel: Kontrollera om användaren är inloggad och är admin
+    if (req.session && req.session.adminUser) {
+        // Om användaren är admin, fortsätt med nästa middleware eller route-handler
+        next();
+    } else {
+        // Om användaren inte är admin, skicka tillbaka en 401 Unauthorized status
+        res.status(401).json({ error: 'Logga in som ADMIN för att kunna hämta data.' });
+    }
 }
 
 // Route för att hämta en specifik produkt för redigering
