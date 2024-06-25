@@ -2,7 +2,6 @@ import express from 'express';
 import Datastore from 'nedb';
 
 const router = express.Router();
-const db = new Datastore({ filename: './db/modifyproducts.db', autoload: true });
 
 // Middleware för att verifiera admin
 function requireAdmin(req, res, next) {
