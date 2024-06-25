@@ -1,12 +1,9 @@
 import Datastore from 'nedb';
 
-const dbMenu = new Datastore({ filename: './db/dbmenu.db', autoload: true });
+// Initiera databasen
+const dbMenu = new Datastore({ filename: './db/menu.db', autoload: true });
 
-// Funktion för att infoga menyer i databasen
-export function insertMenu(callback) {
-    dbMenu.insert(menu, callback);
-}
-
+// Menyobjekt
 const menu = [
     {
         "id": 1,
@@ -41,14 +38,15 @@ const menu = [
         "title": "Kaffe Latte",
         "desc": "Bryggd på månadens bönor.",
         "price": 54,
-        "about": "Välkommen till kafferosteri Power Nappers - en passionerad bryggning av tradition och innovation. Vi är en familjeägd verksamhet dedikerad till att erbjuda kaffe av högsta kvalitet, från böna till kopp. Genom noggrant utvalda kaffebönor från de bästa odlingarna runt om i världen och en expertis i rostning som sträcker sig över generationer, skapar vi unika smakupplevelser som tillfredsställer alla sinnen. Njut av en smidig och förförisk upplevelse med vår kaffe latte. En harmonisk kombination av krämig ånga mjölk och intensiv espresso, vars smak dansar perfekt balanserat på din tunga. Upplev kaffets elegans på sitt bästa sätt."
+        "about": "Välkommen till kafferosteri Power Nappers - en passionerad bryggning av tradition och innovation. Vi är en familjeägd verksamhet dedikerad till att erbjuda kaffe av högsta kvalitet, från böna till kopp. Genom noggrant utvalda kaffebönor från de bästa odlingarna runt om i världen och en expertis i rostning som sträcker sig över generationer, skapar vi unika smakupplevelser som tillfredsställer alla sinnen. Njut av en smidig och förförisk upplevelse med vår kaffe latte. En harmonisk kombination av krämig ångad mjölk och intensiv espresso, vars smak dansar perfekt balanserat på din tunga. Upplev kaffets elegans på sitt bästa sätt."
     },
     {
         "id": 6,
         "title": "Cortado",
         "desc": "Bryggd på månadens bönor.",
         "price": 39,
-        "about": "Välkommen till kafferosteri Power Nappers - en passionerad bryggning av tradition och innovation. Vi är en familjeägd verksamhet dedikerad till att erbjuda kaffe av högsta kvalitet, från böna till kopp. Genom noggrant utvalda kaffebönor från de bästa odlingarna runt om i världen och en expertis i rostning som sträcker sig över generationer, skapar vi unika smakupplevelser som tillfredsställer alla sinnen. Upplev koncentrationen av kaffe i sin renaste form med vår cortado. En harmonisk kombination av espresso och ånga mjölk, vars delikata balans av styrka och lenhet ger en njutbar kaffepaus. För den som söker en elegant och kraftfull smakupplevelse."
+        "about": "Välkommen till kafferosteri Power Nappers - en passionerad bryggning av tradition och innovation. Vi är en familjeägd verksamhet dedikerad till att erbjuda kaffe av högsta kvalitet, från böna till kopp. Genom noggrant utvalda kaffebönor från de bästa odlingarna runt om i världen och en expertis i rostning som sträcker sig över generationer, skapar vi unika smakupplevelser som tillfredsställer alla sinnen. Upplev koncentrationen av kaffe i sin renaste form med vår cortado. En harmonisk kombination av espresso och ångad mjölk, vars delikata balans av styrka och lenhet ger en njutbar kaffepaus. För den som söker en elegant och kraftfull smakupplevelse."
     }
-]
+];
 
+export default menu;
