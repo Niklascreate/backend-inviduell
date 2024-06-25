@@ -20,7 +20,7 @@ export const verifyAdmin = (username, password) => {
         if (username === adminUser.username && password === adminUser.password) {
             resolve(adminUser);
         } else {
-            reject(new Error('Ogiltiga inloggningsuppgifter'));
+            reject(new Error('Fel inloggningsuppgifter. Försök igen!'));
         }
     });
 };
