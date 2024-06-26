@@ -1,6 +1,9 @@
 import express from 'express';
 import Datastore from 'nedb';
 
+const db = new Datastore({ filename: './db/menu.db', autoload: true });
+
+
 const router = express.Router();
 
 // Middleware för att verifiera admin

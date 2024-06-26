@@ -9,6 +9,8 @@ router.post('/verify', async (req, res) => {
 
     try {
         const adminUser = await verifyAdmin(username, password);
+        // Spara admin info i sessionen
+        req.session.adminUser = { id: adminUser.userId, username: adminUser.username };
         res.status(200).json({ message: 'Admin inloggad', user: adminUser });
     } catch (error) {
         res.status(401).json({ error: error.message });
