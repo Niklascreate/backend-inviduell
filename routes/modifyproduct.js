@@ -3,17 +3,13 @@ import Datastore from 'nedb';
 
 const db = new Datastore({ filename: './db/menu.db', autoload: true });
 
-
 const router = express.Router();
 
 // Middleware för att verifiera admin
 function requireAdmin(req, res, next) {
-    // Exempel: Kontrollera om användaren är inloggad och är admin
     if (req.session && req.session.adminUser) {
-        // Om användaren är admin, fortsätt med nästa middleware eller route-handler
         next();
     } else {
-        // Om användaren inte är admin, skicka tillbaka en 401 Unauthorized status
         res.status(401).json({ error: 'Logga in som ADMIN för att kunna hämta data.' });
     }
 }
@@ -34,7 +30,7 @@ router.get('/:productId', requireAdmin, (req, res) => {
 });
 
 // Route för att spara ändringar i en produkt
-router.put('/:productId', requireAdmin, (req, res) => {
+router.put('/modify/:productId', requireAdmin, (req, res) => {
     const productId = req.params.productId;
     const updatedProduct = req.body;
 
@@ -45,6 +41,48 @@ router.put('/:productId', requireAdmin, (req, res) => {
             res.status(404).json({ error: 'Product not found' });
         } else {
             res.status(200).json({ message: 'Product updated successfully' });
+        }
+    });
+});
+
+// Route för att lägga till en ny produkt
+router.post('/add', requireAdmin, (req, res) => {
+    const { id, title, desc, price } = req.body;
+
+    if (!id || !title || !desc || !price) {
+        return res.status(400).json({ error: 'Alla fält (id, title, desc, price) måste fyllas i.' });
+    }
+
+    const newProduct = {
+        id,
+        title,
+        desc,
+        price,
+        about: '',
+        createdAt: new Date(),
+        _id: new Datastore().createNewId()
+    };
+
+    db.insert(newProduct, (err, addedProduct) => {
+        if (err) {
+            res.status(500).json({ error: 'Database error' });
+        } else {
+            res.status(201).json({ message: 'Product added successfully', product: addedProduct });
+        }
+    });
+});
+
+// Route för att ta bort en produkt
+router.delete('/delete/:productId', requireAdmin, (req, res) => {
+    const productId = req.params.productId;
+
+    db.remove({ _id: productId }, {}, (err, numRemoved) => {
+        if (err) {
+            res.status(500).json({ error: 'Database error' });
+        } else if (numRemoved === 0) {
+            res.status(404).json({ error: 'Product not found' });
+        } else {
+            res.status(200).json({ message: 'Product deleted successfully' });
         }
     });
 });

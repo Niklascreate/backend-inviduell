@@ -20,8 +20,8 @@ app.use(express.json());
 
 app.use('/admin', adminRoute); // Skapa admin via POST /admin/verify
 app.use('/products', productsRoutes); // Hämta produkterna
-app.use('/modify', modifyRoute); // Modifiera produkt
-app.use('/menu', menuRoute);
+app.use('/modify', modifyRoute); // Lägga till, ta bort, modifiera produkt.
+app.use('/menu', menuRoute); //Hämta menyn från databasen
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
