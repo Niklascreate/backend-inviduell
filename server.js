@@ -4,6 +4,7 @@ import productsRoutes from './routes/products.js';
 import adminRoute from './routes/admin.js';
 import modifyRoute from './routes/modifyproduct.js';
 import menuRoute from './routes/menu.js';
+import kampanjRoute from './routes/kampanj.js';
 
 const app = express();
 const PORT = 8080;
@@ -22,6 +23,7 @@ app.use('/admin', adminRoute); // Skapa admin via POST /admin/verify
 app.use('/products', productsRoutes); // Hämta produkterna
 app.use('/modify', modifyRoute); // Lägga till, ta bort, modifiera produkt.
 app.use('/menu', menuRoute); //Hämta menyn från databasen
+app.use('/kampanj', kampanjRoute); //Lägg till kampanj
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

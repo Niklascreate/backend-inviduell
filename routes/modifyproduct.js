@@ -29,10 +29,11 @@ router.get('/:productId', requireAdmin, (req, res) => {
     });
 });
 
-// Route för att spara ändringar i en produkt
-router.put('/modify/:productId', requireAdmin, (req, res) => {
+// Route för att modifiera en produkt
+router.put('/modifyproduct/:productId', requireAdmin, (req, res) => {
     const productId = req.params.productId;
     const updatedProduct = req.body;
+    updatedProduct.modifiedAt = new Date();
 
     db.update({ _id: productId }, { $set: updatedProduct }, {}, (err, numUpdated) => {
         if (err) {
@@ -40,7 +41,7 @@ router.put('/modify/:productId', requireAdmin, (req, res) => {
         } else if (numUpdated === 0) {
             res.status(404).json({ error: 'Product not found' });
         } else {
-            res.status(200).json({ message: 'Product updated successfully' });
+            res.status(200).json({ message: 'Produkten har modifierats' });
         }
     });
 });
