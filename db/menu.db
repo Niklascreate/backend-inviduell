@@ -2,8 +2,9 @@
 {"id":100,"title":"Kaffe med dopp","desc":"Bryggd på gummi","price":"natura","about":"","createdAt":{"$$date":1719670801605},"_id":"A8bw0aVfMf8izEe5"}
 {"id":"8","title":"New Title","desc":"New Description","price":"100","about":"","createdAt":{"$$date":1719506564274},"_id":"I6BKyV3ngyibts4E"}
 {"id":"7","title":"ÖL","desc":"NHejpåre","price":"100","about":"","createdAt":{"$$date":1719508235479},"_id":"NYOc9NRZhYmaV3Hk"}
+{"id":1000,"title":"vatten med dopp","desc":"Bryggd på gummi","price":"natura","about":"","createdAt":{"$$date":1719672645888},"_id":"P8VOuhC8i9LpPKrF"}
 {"id":"7","title":"ÖL","desc":"NHejpåre","price":"100","about":"","createdAt":{"$$date":1719507890879},"_id":"Pq8RLSsDOaes1iMH"}
-{"id":1000,"title":"vatten med dopp","desc":"Bryggd på gummi","price":"natura","about":"","createdAt":{"$$date":1719508243870},"_id":"Qm5S6We7QG93pKVd","modifiedAt":{"$$date":1719671064093}}
+{"id":1000,"title":"vatten med dopp","desc":"Bryggd på gummi","price":"natura","about":"","createdAt":{"$$date":1719508243870},"_id":"Qm5S6We7QG93pKVd","modifiedAt":{"$$date":1719673240879}}
 {"id":7,"title":"Espresso","desc":"Bryggd på månadens bönor","price":45,"about":"","_id":"aNFxXAItHUQZsdvJ"}
 {"id":3,"title":"Cappuccino","desc":"Bryggd på månadens bönor.","price":49,"about":"","_id":"ad2mmnxznVXAJGOR"}
 {"id":4,"title":"Latte Macchiato","desc":"Bryggd på månadens bönor.","price":49,"about":"","_id":"bEpuEUyueQf9TJ99"}

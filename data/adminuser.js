@@ -5,7 +5,7 @@ import Datastore from 'nedb';
 const router = express.Router();
 const db = new Datastore({ filename: './db/admin.db', autoload: true });
 
-// Hårdkodad admin-användare
+//admin-användare
 const adminUser = {
     userId: uuidv4(),
     username: 'admin',

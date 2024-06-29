@@ -4,7 +4,6 @@ import { menu } from './menu.js';
 
 const dbMenu = new Datastore({ filename: './db/menu.db', autoload: true });
 
-// Funktion för att initialisera databasen med menydata
 const initializeDatabase = () => {
     dbMenu.find({}, (err, docs) => {
         if (err) {

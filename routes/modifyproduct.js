@@ -5,7 +5,6 @@ const db = new Datastore({ filename: './db/menu.db', autoload: true });
 
 const router = express.Router();
 
-// Middleware för att verifiera admin
 function requireAdmin(req, res, next) {
     if (req.session && req.session.adminUser) {
         next();
@@ -22,7 +21,7 @@ router.get('/:productId', requireAdmin, (req, res) => {
         if (err) {
             res.status(500).json({ error: 'Database error' });
         } else if (!product) {
-            res.status(404).json({ error: 'Product not found' });
+            res.status(404).json({ error: 'Produkt hittades inte' });
         } else {
             res.status(200).json(product);
         }
@@ -39,7 +38,7 @@ router.put('/modifyproduct/:productId', requireAdmin, (req, res) => {
         if (err) {
             res.status(500).json({ error: 'Database error' });
         } else if (numUpdated === 0) {
-            res.status(404).json({ error: 'Product not found' });
+            res.status(404).json({ error: 'Produkt hittades inte' });
         } else {
             res.status(200).json({ message: 'Produkten har modifierats' });
         }
@@ -68,7 +67,7 @@ router.post('/add', requireAdmin, (req, res) => {
         if (err) {
             res.status(500).json({ error: 'Database error' });
         } else {
-            res.status(201).json({ message: 'Product added successfully', product: addedProduct });
+            res.status(201).json({ message: 'Produkt lades till', product: addedProduct });
         }
     });
 });
@@ -81,9 +80,9 @@ router.delete('/delete/:productId', requireAdmin, (req, res) => {
         if (err) {
             res.status(500).json({ error: 'Database error' });
         } else if (numRemoved === 0) {
-            res.status(404).json({ error: 'Product not found' });
+            res.status(404).json({ error: 'Produkt hittades inte' });
         } else {
-            res.status(200).json({ message: 'Product deleted successfully' });
+            res.status(200).json({ message: 'Produkt raderad' });
         }
     });
 });

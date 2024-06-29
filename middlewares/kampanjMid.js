@@ -4,11 +4,11 @@ export default function kampanjMid(req, res, next) {
     const products = req.body.products;
 
     if (!products) {
-        return res.status(400).json({ error: 'Products field is required' });
+        return res.status(400).json({ error: 'Produkter är ett obligatoriskt fält' });
     }
 
     if (!Array.isArray(products)) {
-        return res.status(400).json({ error: 'Products must be an array' });
+        return res.status(400).json({ error: 'Produkterna måste vara en array' });
     }
 
     const productIds = products.map(product => product.id);
@@ -17,27 +17,26 @@ export default function kampanjMid(req, res, next) {
     const invalidProducts = productIds.filter(productId => !productId);
 
     if (invalidProducts.length > 0) {
-        return res.status(400).json({ error: 'All products must have an id' });
+        return res.status(400).json({ error: 'Alla produkter måste ha ett id' });
     }
 
     // Kontrollera att alla produkter i kampanjen finns i menyn
     const notFoundProducts = productIds.filter(productId => !menu.some(item => item.id === productId));
 
     if (notFoundProducts.length > 0) {
-        return res.status(404).json({ error: `Products not found in menu: ${notFoundProducts.join(', ')}` });
+        return res.status(404).json({ error: `Produkten/produkterna kunde ej hittas: ${notFoundProducts.join(', ')}` });
     }
 
-    // Kopiera produkter från menu.js till kampanjen
     const selectedProducts = menu.filter(item => productIds.includes(item.id));
 
     // Kontrollera att endast två produkter är valda
     if (selectedProducts.length !== 2) {
-        return res.status(400).json({ error: 'Exactly two products must be selected for the campaign' });
+        return res.status(400).json({ error: 'Endast två produkter får ingå i kampanjen' });
     }
 
     const totalPrice = selectedProducts.reduce((acc, curr) => acc + curr.price, 0);
 
-    // Skapa kampanjen och spara i databasen
+    // Skapa kampanjen
     const newCampaign = {
         title: req.body.title,
         description: req.body.description,
@@ -46,6 +45,6 @@ export default function kampanjMid(req, res, next) {
         Kampanjpris: totalPrice
     };
 
-    req.newCampaign = newCampaign; // Lägg till kampanjen i request-objektet för användning i nästa middleware eller route-handler
+    req.newCampaign = newCampaign;
     next();
 }

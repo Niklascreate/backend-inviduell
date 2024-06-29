@@ -11,15 +11,15 @@ const PORT = 8080;
 
 // Konfigurera sessionsmiddleware
 app.use(session({
-  secret: 'hemlig nyckel',  // En hemlig nyckel för att signera session-cookie
-  resave: false,            // Förhindrar att sessionen sparas om om den inte ändrats
-  saveUninitialized: false, // Förhindrar att tomma sessioner lagras
-  cookie: { secure: false }  // Används för HTTPS. Sätt till false om du bara testar lokalt utan HTTPS
+  secret: 'hemlig nyckel',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }
 }));
 
 app.use(express.json());
 
-app.use('/admin', adminRoute); // Skapa admin via POST
+app.use('/admin', adminRoute); // Logga in med admin
 app.use('/products', productsRoutes); // Hämta produkterna
 app.use('/modify', modifyRoute); // Lägga till, ta bort, modifiera produkt.
 app.use('/menu', menuRoute); //Hämta menyn från databasen

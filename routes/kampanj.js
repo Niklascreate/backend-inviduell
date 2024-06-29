@@ -7,9 +7,8 @@ const router = express.Router();
 
 // Route för att lägga till kampanjerbjudanden
 router.post('/add', kampanjMiddleware, (req, res) => {
-    const newCampaign = req.newCampaign; // Hämta kampanjen från request-objektet
+    const newCampaign = req.newCampaign;
 
-    // Skapa kampanjen och spara i databasen
     db.insert(newCampaign, (err, addedCampaign) => {
         if (err) {
             return res.status(500).json({ error: 'Databas error' });
