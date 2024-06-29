@@ -4,7 +4,7 @@ import productsRoutes from './routes/products.js';
 import adminRoute from './routes/admin.js';
 import modifyRoute from './routes/modifyproduct.js';
 import menuRoute from './routes/menu.js';
-import kampanjRoute from './routes/kampanj.js';
+import kampanjRoute from './routes/Kampanj.js';
 
 const app = express();
 const PORT = 8080;

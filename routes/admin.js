@@ -4,7 +4,7 @@ import { verifyAdmin } from '../data/adminuser.js';
 const router = express.Router();
 
 // Route för att verifiera admin-användare
-router.post('/loggin', async (req, res) => {
+router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     try {
