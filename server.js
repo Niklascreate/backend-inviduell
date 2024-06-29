@@ -19,7 +19,7 @@ app.use(session({
 
 app.use(express.json());
 
-app.use('/admin', adminRoute); // Skapa admin via POST /admin/verify
+app.use('/admin', adminRoute); // Skapa admin via POST
 app.use('/products', productsRoutes); // Hämta produkterna
 app.use('/modify', modifyRoute); // Lägga till, ta bort, modifiera produkt.
 app.use('/menu', menuRoute); //Hämta menyn från databasen
