@@ -1,3 +1,5 @@
+import { menu } from '../data/menu.js';
+
 export default function kampanjMid(req, res, next) {
     const products = req.body.products;
 
@@ -25,6 +27,25 @@ export default function kampanjMid(req, res, next) {
         return res.status(404).json({ error: `Products not found in menu: ${notFoundProducts.join(', ')}` });
     }
 
-    // Alla produkter finns i menyn, fortsätt till nästa middleware eller route-handler
+    // Kopiera produkter från menu.js till kampanjen
+    const selectedProducts = menu.filter(item => productIds.includes(item.id));
+
+    // Kontrollera att endast två produkter är valda
+    if (selectedProducts.length !== 2) {
+        return res.status(400).json({ error: 'Exactly two products must be selected for the campaign' });
+    }
+
+    const totalPrice = selectedProducts.reduce((acc, curr) => acc + curr.price, 0);
+
+    // Skapa kampanjen och spara i databasen
+    const newCampaign = {
+        title: req.body.title,
+        description: req.body.description,
+        products: selectedProducts,
+        createdAt: new Date(),
+        Kampanjpris: totalPrice
+    };
+
+    req.newCampaign = newCampaign; // Lägg till kampanjen i request-objektet för användning i nästa middleware eller route-handler
     next();
 }
