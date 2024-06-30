@@ -42,7 +42,7 @@ Om man hämtar ett id på en produkt i databasen kan man sedan använda den för
 
 ```
  {
-        "id": 20,
+        "id": 1,
         "title": "vatten",
         "desc": "Bryggd på öl",
         "price": "5 kr",
