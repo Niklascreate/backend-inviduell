@@ -40,7 +40,7 @@ Om man hämtar ett id på en produkt i databasen kan man sedan använda den för
 
 
 
-
+```
  {
         "id": 20,
         "title": "vatten",
@@ -48,7 +48,7 @@ Om man hämtar ett id på en produkt i databasen kan man sedan använda den för
         "price": "5 kr",
         "about": ""
     }
-
+```
 
 
 ### GET
@@ -67,7 +67,7 @@ ADD Product: http://localhost:8080/modify/add
 Vill man som admin lägga till nya produkter kan man använda denna endpoint. Och då skrivar man i JSON så här:
 
 
-
+```
 
  {
         "id": 1000,
@@ -77,7 +77,7 @@ Vill man som admin lägga till nya produkter kan man använda denna endpoint. Oc
         "about": ""
     }
 
-
+```
 
 
 
@@ -97,7 +97,7 @@ KAMPANJ Products: `http://localhost:8080/kampanj/add`
 För att skapa en kampanj på till exempel två produkter behöver man göra ett post anrop och i bodyn med JSON skriva exempelvis följande:
 
 
-
+```
 
 {
     "title": "Kampanj",
@@ -113,5 +113,5 @@ För att skapa en kampanj på till exempel två produkter behöver man göra ett
     ]
 }
 
-
+```
 Och här är det viktigt att dessa IDn faktiskt finns i menyn annars kommer ett felmeddelande att det inte går.
