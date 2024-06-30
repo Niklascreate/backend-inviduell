@@ -6,7 +6,7 @@
 
 ##Mina endpoints:
 
-###POST = LOGIN Admin: http://localhost:8080/admin/login
+###POST = LOGIN Admin: `http://localhost:8080/admin/login
 Denna endpoint används för att logga in som admin för att kunna utföra alla endpoints nedan. När man loggat in sparas allting med express-session där data om användaren lagras. Man loggar i med JSON så här :
 {
 	"username": "admin",
